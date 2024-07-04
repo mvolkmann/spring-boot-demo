@@ -19,6 +19,11 @@ public class InMemoryDogService implements DogService {
     }
 
     @Override
+    public Dog getDog(String dogId) {
+        return dogMap.get(UUID.fromString(dogId));
+    }
+
+    @Override
     public Dog[] getDogs() {
         Collection<Dog> dogCollection = dogMap.values();
         Dog[] dogArray = dogCollection.toArray(new Dog[0]);

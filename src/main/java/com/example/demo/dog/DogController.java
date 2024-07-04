@@ -22,6 +22,12 @@ public class DogController {
         return service.getDogs();
     }
 
+    @GetMapping("/{dogId}")
+    public ResponseEntity<Dog> getDog(@PathVariable String dogId) {
+        Dog dog = service.getDog(dogId);
+        return new ResponseEntity<Dog>(dog, dog == null ? HttpStatus.NOT_FOUND : HttpStatus.OK);
+    }
+
     @PostMapping("")
     public Dog createDog(@RequestBody Dog dog) {
         return service.addDog(dog.breed, dog.name);
