@@ -39,13 +39,18 @@ public class DogController {
     }
 
     @PutMapping("/{dogId}")
-    public Dog updateDog(@PathVariable String dogId, @RequestBody Dog dog) {
-        return service.updateDog(dogId, dog);
+    public ResponseEntity<Dog> updateDog(@PathVariable String dogId, @RequestBody Dog dog) {
+        Optional<Dog> optionalDog = service.updateDog(dogId, dog);
+        return new ResponseEntity<Dog>(
+            optionalDog.isPresent() ? optionalDog.get() : null,
+            optionalDog.isPresent() ? HttpStatus.OK : HttpStatus.NOT_FOUND
+        );
     }
 
     @DeleteMapping("/{dogId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public ResponseEntity<Void> deleteDog(@PathVariable String dogId) {
         boolean present = service.deleteDog(dogId);
-        return new ResponseEntity<>(null, present ? HttpStatus.OK : HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(null, present ? HttpStatus.NO_CONTENT : HttpStatus.NOT_FOUND);
     }
 }

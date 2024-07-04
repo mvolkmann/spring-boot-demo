@@ -32,11 +32,14 @@ public class InMemoryDogService implements DogService {
     }
 
     @Override
-    public Dog updateDog(String dogId, Dog dog) {
-        Dog existingDog = dogMap.get(UUID.fromString(dogId));
-        existingDog.breed = dog.breed;
-        existingDog.name = dog.name;
-        return existingDog;
+    public Optional<Dog> updateDog(String dogId, Dog dog) {
+        Optional<Dog> optionalDog = Optional.of(dogMap.get(UUID.fromString(dogId)));
+        if (optionalDog.isPresent()) {
+            Dog existingDog = optionalDog.get();
+            existingDog.breed = dog.breed;
+            existingDog.name = dog.name;
+        }
+        return optionalDog;
     }
 
     @Override

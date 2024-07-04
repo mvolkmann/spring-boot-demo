@@ -9,7 +9,7 @@ interface DogService {
 
     Dog[] getDogs();
 
-    Dog updateDog(String dogId, Dog dog);
+    Optional<Dog> updateDog(String dogId, Dog dog);
 
     boolean deleteDog(String dogId);
 }
