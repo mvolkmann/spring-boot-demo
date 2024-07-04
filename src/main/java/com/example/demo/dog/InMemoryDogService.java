@@ -2,6 +2,7 @@ package com.example.demo.dog;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Optional;
 import java.util.UUID;
 //import org.springframework.sterotype.Service;
 
@@ -19,8 +20,8 @@ public class InMemoryDogService implements DogService {
     }
 
     @Override
-    public Dog getDog(String dogId) {
-        return dogMap.get(UUID.fromString(dogId));
+    public Optional<Dog> getDog(String dogId) {
+        return Optional.of(dogMap.get(UUID.fromString(dogId)));
     }
 
     @Override

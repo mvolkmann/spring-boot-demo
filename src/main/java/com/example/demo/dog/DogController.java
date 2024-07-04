@@ -1,5 +1,6 @@
 package com.example.demo.dog;
 
+import java.util.Optional;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,8 +25,11 @@ public class DogController {
 
     @GetMapping("/{dogId}")
     public ResponseEntity<Dog> getDog(@PathVariable String dogId) {
-        Dog dog = service.getDog(dogId);
-        return new ResponseEntity<Dog>(dog, dog == null ? HttpStatus.NOT_FOUND : HttpStatus.OK);
+        Optional<Dog> dog = service.getDog(dogId);
+        return new ResponseEntity<Dog>(
+            dog.isPresent() ? dog.get() : null,
+            dog.isPresent() ? HttpStatus.OK : HttpStatus.NOT_FOUND
+        );
     }
 
     @PostMapping("")

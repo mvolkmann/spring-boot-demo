@@ -1,9 +1,11 @@
 package com.example.demo.dog;
 
+import java.util.Optional;
+
 interface DogService {
     Dog addDog(String breed, String name);
 
-    Dog getDog(String dogId);
+    Optional<Dog> getDog(String dogId);
 
     Dog[] getDogs();
 
