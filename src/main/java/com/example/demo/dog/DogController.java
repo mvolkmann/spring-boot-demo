@@ -33,6 +33,7 @@ public class DogController {
     }
 
     @PostMapping("")
+    @ResponseStatus(HttpStatus.CREATED)
     public Dog createDog(@RequestBody Dog dog) {
         return service.addDog(dog.breed, dog.name);
     }
