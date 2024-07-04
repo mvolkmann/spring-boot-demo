@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/dog") // provides the base URL path for all the endpoints defined here
+@RequestMapping("/api/dog") // provides base URL path for all the endpoints defined here
 public class DogController {
 
     private DogService service;
