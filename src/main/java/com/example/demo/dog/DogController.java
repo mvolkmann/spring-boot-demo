@@ -1,15 +1,17 @@
 package com.example.demo.dog;
 
+import jakarta.validation.Valid;
 import java.util.Optional;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@SuppressWarnings("unused")
 @RestController
 @RequestMapping("/api/dog") // provides base URL path for all the endpoints defined here
 public class DogController {
 
-    private DogService service;
+    private final DogService service;
 
     // The object passed in will be an instance of InMemoryDogService.
     public DogController(DogService service) {
@@ -26,23 +28,23 @@ public class DogController {
     @GetMapping("/{dogId}")
     public ResponseEntity<Dog> getDog(@PathVariable String dogId) {
         Optional<Dog> dog = service.getDog(dogId);
-        return new ResponseEntity<Dog>(
-            dog.isPresent() ? dog.get() : null,
+        return new ResponseEntity<>(
+            dog.orElse(null),
             dog.isPresent() ? HttpStatus.OK : HttpStatus.NOT_FOUND
         );
     }
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public Dog createDog(@RequestBody Dog dog) {
+    public Dog createDog(@Valid @RequestBody Dog dog) {
         return service.addDog(dog.breed, dog.name);
     }
 
     @PutMapping("/{dogId}")
     public ResponseEntity<Dog> updateDog(@PathVariable String dogId, @RequestBody Dog dog) {
         Optional<Dog> optionalDog = service.updateDog(dogId, dog);
-        return new ResponseEntity<Dog>(
-            optionalDog.isPresent() ? optionalDog.get() : null,
+        return new ResponseEntity<>(
+            optionalDog.orElse(null),
             optionalDog.isPresent() ? HttpStatus.OK : HttpStatus.NOT_FOUND
         );
     }

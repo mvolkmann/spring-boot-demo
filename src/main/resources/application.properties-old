@@ -1,4 +1,4 @@
 server.port=1919
 spring.application.name=demo
-spring.devtools.restart.additional-paths=src/main/**
+#spring.devtools.restart.additional-paths=src/main/**
 spring.devtools.restart.enabled=true

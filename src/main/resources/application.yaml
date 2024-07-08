@@ -1,0 +1,13 @@
+logging.level:
+  root: error
+  com.example.demo: trace
+
+server.port: 1919
+
+spring:
+  application:
+    name: demo
+
+  devtools.restart:
+    enabled: true
+    # additional-paths: src/main/**
