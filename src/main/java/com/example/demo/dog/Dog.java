@@ -4,9 +4,9 @@ import jakarta.validation.constraints.NotEmpty;
 import java.util.UUID;
 
 public class Dog {
-    public String breed;
-    public String name;
-    public UUID id;
+    private final UUID id;
+    private String breed;
+    private String name;
 
     public Dog(
         @NotEmpty
@@ -17,5 +17,25 @@ public class Dog {
         this.id = UUID.randomUUID();
         this.breed = breed;
         this.name = name;
+    }
+
+    public String getBreed() {
+        return breed;
+    }
+
+    public void setBreed(String breed) {
+        this.breed = breed;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public UUID getId() {
+        return id;
     }
 }

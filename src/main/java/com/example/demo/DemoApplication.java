@@ -14,5 +14,4 @@ public class DemoApplication {
 		logger.info("Hello, World!");
 		SpringApplication.run(DemoApplication.class, args);
 	}
-
 }

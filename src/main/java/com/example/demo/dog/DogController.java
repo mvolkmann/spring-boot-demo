@@ -37,16 +37,14 @@ public class DogController {
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
     public Dog createDog(@Valid @RequestBody Dog dog) {
-        return service.addDog(dog.breed, dog.name);
+        return service.addDog(dog.getBreed(), dog.getName());
     }
 
     @PutMapping("/{dogId}")
     public ResponseEntity<Dog> updateDog(@PathVariable String dogId, @RequestBody Dog dog) {
-        Optional<Dog> optionalDog = service.updateDog(dogId, dog);
-        return new ResponseEntity<>(
-            optionalDog.orElse(null),
-            optionalDog.isPresent() ? HttpStatus.OK : HttpStatus.NOT_FOUND
-        );
+        return service.updateDog(dogId, dog)
+            .map(optionalDog -> new ResponseEntity<>(optionalDog, HttpStatus.OK))
+            .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/{dogId}")

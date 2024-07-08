@@ -2,7 +2,7 @@ package com.example.demo.dog;
 
 import java.util.Optional;
 
-interface DogService {
+public interface DogService {
     Dog addDog(String breed, String name);
 
     Optional<Dog> getDog(String dogId);
