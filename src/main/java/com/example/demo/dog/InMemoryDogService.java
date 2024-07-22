@@ -47,5 +47,4 @@ public class InMemoryDogService implements DogService {
         Dog dog = dogMap.remove(UUID.fromString(dogId));
         return dog != null;
     }
-
 }
