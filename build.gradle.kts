@@ -21,14 +21,14 @@ dependencies {
     implementation("org.opensearch.client:opensearch-java:2.8.1")
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.springframework.boot:spring-boot-starter-web")
+    testImplementation("org.assertj:assertj-core:3.26.3")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.springframework.boot:spring-boot-starter-webflux")
     //testImplementation("org.junit.jupiter:junit-jupiter-api")
     //testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
-/* TODO: Why can't I include this?
-test {
+tasks.test {
     useJUnitPlatform()
 }
-*/

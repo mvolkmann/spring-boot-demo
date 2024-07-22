@@ -1,7 +1,8 @@
 package com.example.demo.dog;
 
 import java.util.Collection;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -9,7 +10,7 @@ import java.util.UUID;
 @org.springframework.stereotype.Service
 public class InMemoryDogService implements DogService {
 
-    private final HashMap<UUID, Dog> dogMap = new HashMap<>();
+    private final Map<UUID, Dog> dogMap = new LinkedHashMap<>();
 
     @Override
     public Dog addDog(final String breed, final String name) {

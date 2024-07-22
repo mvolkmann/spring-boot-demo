@@ -1,5 +1,6 @@
 package com.example.demo.dog;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import jakarta.validation.constraints.NotEmpty;
 import java.util.UUID;
 
@@ -15,6 +16,17 @@ public class Dog {
         String name
     ) {
         this.id = UUID.randomUUID();
+        this.breed = breed;
+        this.name = name;
+    }
+
+    @JsonCreator
+    Dog(
+        UUID id,
+        String breed,
+        String name
+    ) {
+        this.id = id;
         this.breed = breed;
         this.name = name;
     }
