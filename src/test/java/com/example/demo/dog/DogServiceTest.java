@@ -9,22 +9,22 @@ public class DogServiceTest {
     @Test
     public void shouldHandleCrud() throws Exception {
         DogService service = new InMemoryDogService();
-        service.addDog("Whippet", "Comet");
         service.addDog("German Shorthaired Pointer", "Oscar");
+        service.addDog("Whippet", "Comet");
 
         Dog[] dogs = service.getDogs();
         assertThat(dogs).isNotNull();
         assertThat(dogs).hasSize(2);
-        assertThat(dogs[0].getName()).isEqualTo("Comet");
-        assertThat(dogs[1].getName()).isEqualTo("Oscar");
+        assertThat(dogs[0].getName()).isEqualTo("Oscar");
+        assertThat(dogs[1].getName()).isEqualTo("Comet");
 
-        Dog dog = dogs[0];
+        Dog dog = dogs[1];
         String id = dog.getId().toString();
         dog.setName("Fireball");
         service.updateDog(id, dog);
         Optional<Dog> updatedDog = service.getDog(id);
         assertThat(updatedDog.isPresent());
-        assertThat(updatedDog.get().getName()).isEqualTo("Fireball"); 
+        assertThat(updatedDog.get().getName()).isEqualTo("Fireball");
 
         service.deleteDog(id);
         dogs = service.getDogs();

@@ -16,8 +16,10 @@ public class DogController {
     // The object passed in will be an instance of InMemoryDogService.
     public DogController(DogService service) {
         this.service = service;
-        service.addDog("Whippet", "Comet");
+        //service.addDog("Treeing Walker Coonhound", "Maisey");
+        //service.addDog("Native American Indian Dog", "Ramsay");
         service.addDog("German Shorthaired Pointer", "Oscar");
+        service.addDog("Whippet", "Comet");
     }
 
     @GetMapping("")

@@ -28,7 +28,7 @@ public class DogControllerTest {
         Dog[] dogs = response.getBody();
         assertThat(dogs).isNotNull();
         assertThat(dogs).hasSize(2);
-        assertThat(dogs[0].getName()).isEqualTo("Comet");
-        assertThat(dogs[1].getName()).isEqualTo("Oscar");
+        assertThat(dogs[0].getName()).isEqualTo("Oscar");
+        assertThat(dogs[1].getName()).isEqualTo("Comet");
     }
 }
