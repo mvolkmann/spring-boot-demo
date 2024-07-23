@@ -5,9 +5,9 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
+import org.springframework.stereotype.Service;
 
-// @Service
-@org.springframework.stereotype.Service
+@Service
 public class InMemoryDogService implements DogService {
 
     private final Map<UUID, Dog> dogMap = new LinkedHashMap<>();

@@ -19,6 +19,10 @@ dependencies {
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     implementation("org.apache.httpcomponents.client5:httpclient5:5.2.1")
     implementation("org.opensearch.client:opensearch-java:2.8.1")
+    // Starters are a set of convenient dependency descriptors that you can
+    // include in your application. You get a one-stop shop for all the
+    // Spring and related technologies that you need without having to
+    // hunt through sample code and copy-paste loads of dependency descriptors. 
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.springframework.boot:spring-boot-starter-web")
     testImplementation("org.assertj:assertj-core:3.26.3")
