@@ -1,7 +1,12 @@
-logging.level:
-  root: error
-  com.example.demo: trace
-  com.example.demo.dog: trace
+#logging.level:
+logging:
+  level:
+    # The default log level is INFO,
+    # so TRACE and DEBUG messages are not shown.
+    # THESE SETTINGS HAVE NO EFFECT!
+    #root: ERROR
+    com.example.demo: TRACE
+    #com.example.demo.dog: TRACE
 
 server.port: 1919
 
@@ -9,6 +14,7 @@ spring:
   application:
     name: demo
 
-  devtools.restart:
-    enabled: true
-    # additional-paths: src/main/**
+  devtools:
+    #add-properties: false
+    restart:
+      enabled: true
