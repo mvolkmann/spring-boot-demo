@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class DogTest {
     @Test
-    public void canCreate() throws Exception {
+    public void canCreate() throws AssertionError {
         String breed = "Whippet";
         String name = "Comet";
         Dog dog = new Dog(breed, name);
@@ -15,12 +15,12 @@ public class DogTest {
     }
 
     @Test
-    public void throwsOnMissingBreed() throws Exception {
+    public void throwsOnMissingBreed() throws AssertionError {
         String breed = "";
         String name = "Oscar";
-        Exception exception = assertThrows(
+        assertThrows(
             RuntimeException.class,
-            () -> { Dog dog = new Dog(breed, name); },
+            () -> new Dog(breed, name),
             "Expected new Dog with empty breed to throw"
         );
     }
