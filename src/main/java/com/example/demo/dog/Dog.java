@@ -8,6 +8,7 @@ public class Dog {
     private final UUID id;
     private String breed;
     private String name;
+    private String color;
 
     public Dog(
         @NotEmpty
@@ -36,19 +37,27 @@ public class Dog {
         return breed;
     }
 
-    public void setBreed(String breed) {
-        this.breed = breed;
+    public String getColor() {
+        return color;
+    }
+
+    public UUID getId() {
+        return id;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setBreed(String breed) {
+        this.breed = breed;
     }
 
-    public UUID getId() {
-        return id;
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
