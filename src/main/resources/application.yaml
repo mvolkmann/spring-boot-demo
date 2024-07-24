@@ -1,6 +1,7 @@
 logging.level:
   root: error
   com.example.demo: trace
+  com.example.demo.dog: trace
 
 server.port: 1919
 

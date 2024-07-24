@@ -15,6 +15,7 @@ public class Dog {
         @NotEmpty
         String name
     ) {
+        if (breed.isEmpty()) throw new RuntimeException("Dog requires breed");
         this.id = UUID.randomUUID();
         this.breed = breed;
         this.name = name;

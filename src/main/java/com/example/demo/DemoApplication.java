@@ -14,7 +14,11 @@ public class DemoApplication {
     //private final OpenSearchClient openSearchClient;
 
 	public static void main(String[] args) {
-		logger.info("Hello, World!");
+		logger.trace("This is a trace log message.");
+		logger.debug("This is a debug log message.");
+		logger.info("This is an info log message!");
+		logger.warn("This is a warn log message.");
+		logger.error("This is an error log message.");
 		logger.info("{}, {}!", "Hello", "World");
 		SpringApplication.run(DemoApplication.class, args);
 	}
