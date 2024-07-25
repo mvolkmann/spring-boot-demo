@@ -9,9 +9,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class DemoApplication {
 	// The supported logging levels are fatal, error, warn, info, debug, and trace.
-	// Can use this in non-static methods.
-	//private final Logger logger = LoggerFactory.getLogger(this.getClass());
-	// Can use this in static methods.
 	private static final Logger logger = LoggerFactory.getLogger(DemoApplication.class);
 
     //private final OpenSearchClient openSearchClient;

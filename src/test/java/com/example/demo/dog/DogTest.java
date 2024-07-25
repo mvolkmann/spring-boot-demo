@@ -25,7 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class DogTest {
     @Test
-    public void canCreate() throws AssertionError {
+    public void canCreate() throws AssertionError, InstantiationException {
         String breed = "Whippet";
         String name = "Comet";
         Dog dog = new Dog(breed, name);
@@ -55,7 +55,7 @@ public class DogTest {
         String breed = "";
         String name = "Oscar";
         assertThrows(
-            RuntimeException.class,
+            InstantiationException.class,
             () -> new Dog(breed, name),
             "Expected new Dog with empty breed to throw"
         );

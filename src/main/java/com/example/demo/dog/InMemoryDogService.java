@@ -14,9 +14,13 @@ public class InMemoryDogService implements DogService {
 
     @Override
     public Dog addDog(final String breed, final String name) {
-        Dog dog = new Dog(breed, name);
-        dogMap.put(dog.getId(), dog);
-        return dog;
+        try {
+            Dog dog = new Dog(breed, name);
+            dogMap.put(dog.getId(), dog);
+            return dog;
+        } catch (InstantiationException e) {
+            return null;
+        }
     }
 
     @Override
