@@ -1,7 +1,11 @@
 package com.example.demo.dog;
 
+import com.example.demo.DemoApplication;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import jakarta.validation.constraints.NotEmpty;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.UUID;
 
 public class Dog {
@@ -9,6 +13,11 @@ public class Dog {
     private String breed;
     private String name;
     private String color;
+
+    private static final Logger logger = LoggerFactory.getLogger(DemoApplication.class);
+
+    // This is only here to test ArchitectureTest.java serviceAccess rule.
+    private final DogService service = new InMemoryDogService();
 
     public Dog(
         @NotEmpty
@@ -20,6 +29,9 @@ public class Dog {
         this.id = UUID.randomUUID();
         this.breed = breed;
         this.name = name;
+
+        // This is only here to test ArchitectureTest.java serviceAccess rule.
+        logger.info(service.toString());
     }
 
     @JsonCreator
