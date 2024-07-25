@@ -11,6 +11,16 @@ public class CodingRulesTest {
     JavaClasses importedClasses = new ClassFileImporter().importPackages("com.example.demo");
 
     @Test
+    public void assertions() {
+        ASSERTIONS_SHOULD_HAVE_DETAIL_MESSAGE.check(importedClasses);
+    }
+
+    @Test
+    public void deprecated() {
+        DEPRECATED_API_SHOULD_NOT_BE_USED.check(importedClasses);
+    }
+
+    @Test
     public void exceptions() {
         NO_CLASSES_SHOULD_THROW_GENERIC_EXCEPTIONS.check(importedClasses);
     }
@@ -27,6 +37,15 @@ public class CodingRulesTest {
     }
 
     @Test
+    public void loggers() {
+        fields().that().haveRawType(Logger.class)
+                .should().bePrivate()
+                .andShould().beStatic()
+                .andShould().beFinal()
+                .because("we agreed on this convention");
+    }
+
+    @Test
     public void logging() {
         NO_CLASSES_SHOULD_USE_JAVA_UTIL_LOGGING.check(importedClasses);
     }
@@ -34,15 +53,5 @@ public class CodingRulesTest {
     @Test
     public void streams() {
         NO_CLASSES_SHOULD_ACCESS_STANDARD_STREAMS.check(importedClasses);
-    }
-
-    // This rule incorrectly flags Loggers that are private, static, and final!
-    @Test
-    public void loggers() {
-        fields().that().haveRawType(Logger.class)
-                .should().bePrivate()
-                .andShould().beStatic()
-                .andShould().beFinal()
-                .because("we agreed on this convention");
     }
 }
